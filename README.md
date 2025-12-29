@@ -17,6 +17,12 @@ incremental, production-style phases.
 
 Each phase builds on the previous one, following cloud engineering best practices.
 
+## Documentation Index
+- [Phase 1 – Static Hosting](site/README.md)
+- [Phase 2 – Serverless Backend](serverless/README.md)
+- Phase 3 – Dockerized Backend (coming soon)
+
+
 ## Repository Structure
 
 cloud-native-portfolio/
@@ -61,3 +67,7 @@ frontend foundation for future cloud-native enhancements.
 
 ### Next Phase
 Phase 2 will introduce a serverless backend using AWS Lambda, API Gateway, and DynamoDB.
+
+## Phase 2 – Serverless Backend (AWS Lambda)
+A serverless backend was added to the portfolio using AWS Lambda, API Gateway,
+and DynamoDB to process and store contact form submissions.
