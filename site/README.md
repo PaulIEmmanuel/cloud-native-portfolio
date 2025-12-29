@@ -43,7 +43,7 @@ Deploy a minimal, professional personal portfolio using AWS S3 static website
 hosting, following cloud security and documentation best practices.
 
 ### Architecture
-![Phase 1 Architecture](diagrams/phase-1-architecture.png)
+![Phase 1 Architecture](image.png)
 
 ### AWS Services Used
 - Amazon S3 (Static Website Hosting)
