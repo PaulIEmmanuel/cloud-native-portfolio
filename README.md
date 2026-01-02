@@ -20,7 +20,7 @@ Each phase builds on the previous one, following cloud engineering best practice
 ## Documentation Index
 - [Phase 1 – Static Hosting](site/README.md)
 - [Phase 2 – Serverless Backend](serverless/README.md)
-- Phase 3 – Dockerized Backend (coming soon)
+- [Phase 3 – Containerized Backend](docker/README.md)
 
 
 ## Repository Structure

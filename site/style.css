@@ -1,16 +1,85 @@
+:root {
+  --bg: #f9fafb;
+  --card: #ffffff;
+  --primary: #2563eb;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.card {
+  background: var(--card);
   max-width: 800px;
-  margin: auto;
-  padding: 20px;
-  line-height: 1.6;
+  width: 100%;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
 }
 
-header, footer {
-  text-align: center;
+header h1 {
+  margin-bottom: 0.25rem;
 }
 
-h1, h2 {
-  color: #333;
+.subtitle {
+  color: var(--muted);
+  margin-bottom: 0.5rem;
 }
 
+.contact a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+h2 {
+  margin-top: 2rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.25rem;
+}
+
+ul {
+  padding-left: 1.2rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+button {
+  margin-top: 0.75rem;
+  padding: 0.6rem;
+  width: 100%;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+footer {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
