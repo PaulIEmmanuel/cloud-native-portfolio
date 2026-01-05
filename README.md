@@ -12,8 +12,8 @@ incremental, production-style phases.
 - Phase 2: Serverless Backend (Lambda, API Gateway, DynamoDB)
 - Phase 3: Containerized Backend (Docker, EC2, RDS)
 - Phase 4: Infrastructure as Code (Terraform)
-- Phase 5: Automation & Monitoring
-- Phase 6: CI/CD Pipeline
+- Phase 5: CI/CD Pipeline 
+- Phase 6: Automation, Monitoring & Hardening 
 
 Each phase builds on the previous one, following cloud engineering best practices.
 
@@ -22,6 +22,7 @@ Each phase builds on the previous one, following cloud engineering best practice
 - [Phase 2 – Serverless Backend](serverless/README.md)
 - [Phase 3 – Containerized Backend](docker/README.md)
 - [Phase 4 - Terraform](terraform/README.md) 
+- [Phase 5 - CI/CD Pipeline](terraform/README.md)
 
 ## Repository Structure
 
