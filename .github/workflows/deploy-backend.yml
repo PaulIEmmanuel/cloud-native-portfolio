@@ -1,0 +1,43 @@
+name: Build and Push Backend to ECR
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - docker/**
+      - .github/workflows/deploy-backend.yml
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials via OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::438731655337:role/github-actions-ecr-role
+          aws-region: us-east-1
+
+      - name: Login to Amazon ECR
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build Docker image
+        run: |
+          docker build -t portfolio-backend docker\app
+
+      - name: Tag Docker image
+        run: |
+          docker tag portfolio-backend:latest \
+          438731655337.dkr.ecr.us-east-1.amazonaws.com/portfolio-backend:latest
+
+      - name: Push Docker image to ECR
+        run: |
+          docker push 438731655337.dkr.ecr.us-east-1.amazonaws.com/portfolio-backend:latest
