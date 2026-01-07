@@ -21,45 +21,6 @@ resource "aws_dynamodb_table" "portfolio_messages" {
   }
 }
 
-# IAM Role
-resource "aws_iam_role" "ec2_role" {
-  name = "portfolio-ec2-role"
-
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [{
-      Effect = "Allow"
-      Principal = {
-        Service = "ec2.amazonaws.com"
-      }
-      Action = "sts:AssumeRole"
-    }]
-  })
-}
-
-resource "aws_iam_policy" "dynamodb_policy" {
-  name = "portfolio-dynamodb-policy"
-
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [{
-      Effect   = "Allow"
-      Action   = ["dynamodb:PutItem"]
-      Resource = aws_dynamodb_table.portfolio_messages.arn
-    }]
-  })
-}
-
-resource "aws_iam_role_policy_attachment" "attach_policy" {
-  role       = aws_iam_role.ec2_role.name
-  policy_arn = aws_iam_policy.dynamodb_policy.arn
-}
-
-resource "aws_iam_instance_profile" "ec2_profile" {
-  name = "portfolio-instance-profile"
-  role = aws_iam_role.ec2_role.name
-}
-
 # Security Group
 resource "aws_security_group" "portfolio_sg" {
   name        = "portfolio-sg"
@@ -83,7 +44,7 @@ resource "aws_security_group" "portfolio_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["102.89.84.168/32"]
+    cidr_blocks = ["${var.admin_ip}/32"]  
   }
 
   egress {
@@ -99,7 +60,6 @@ resource "aws_security_group" "portfolio_sg" {
 
    lifecycle {
     ignore_changes = [
-      ingress,
       egress,
       name,
       description,
@@ -119,13 +79,45 @@ resource "aws_instance" "portfolio_ec2" {
   tags = {
     Name = "portfolio-backend"
   }
+
+  user_data = <<-EOF
+#!/bin/bash
+yum update -y
+
+# Install Docker
+yum install -y docker
+systemctl start docker
+systemctl enable docker
+usermod -aG docker ec2-user
+
+# Install AWS CLI v2 (not always preinstalled)
+yum install -y awscli
+
+# Login to ECR
+aws ecr get-login-password --region us-east-1 \
+| docker login --username AWS --password-stdin ${aws_ecr_repository.portfolio_backend.repository_url}
+
+# Pull image
+docker pull ${aws_ecr_repository.portfolio_backend.repository_url}:latest
+
+# Run container
+docker stop portfolio-backend || true
+docker rm portfolio-backend || true
+
+docker run -d \
+  --name portfolio-backend \
+  -p 80:5000 \
+  ${aws_ecr_repository.portfolio_backend.repository_url}:latest
+EOF
+
+
+
   lifecycle {
     ignore_changes = [
       ami,
       iam_instance_profile,
-      user_data,
       security_groups,
       vpc_security_group_ids
     ]
   }
-}
+} 

@@ -5,7 +5,7 @@ Extend the static portfolio by introducing a serverless backend that processes
 user-submitted data using AWS-managed services.
 
 ## Architecture
-![Phase 2 Architecture](../diagrams/phase-2-architecture.png)
+[Phase 2 Architecture](../diagrams/phase-2-architecture.png)
 
 ## AWS Services Used
 - AWS Lambda (Python)
