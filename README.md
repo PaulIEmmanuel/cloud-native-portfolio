@@ -13,16 +13,17 @@ incremental, production-style phases.
 - Phase 3: Containerized Backend (Docker, EC2, RDS)
 - Phase 4: Infrastructure as Code (Terraform)
 - Phase 5: CI/CD Pipeline 
-- Phase 6: Automation & Monitoring  
+- Phase 6: Monitoring, Observability, and Reliability Automation  
 
 Each phase builds on the previous one, following cloud engineering best practices.
 
 ## Documentation Index
-- [Phase 1 – Current page]
+-  Phase 1 – Current page
 - [Phase 2 – Serverless Backend](serverless/README.md)
 - [Phase 3 – Containerized Backend](docker/README.md)
 - [Phase 4 - Terraform](terraform/README.md) 
 - [Phase 5 - CI/CD Pipeline](README_PHASE_5.md)
+- [Phase 6 – Monitoring, Observability, and Reliability Automation](README_PHASE_6.md)
 
 ## Repository Structure
 
@@ -32,7 +33,6 @@ cloud-native-portfolio/
 ├── serverless/        # Serverless backend (Phase 2)
 ├── docker/            # Containerized services (Phase 3)
 ├── terraform/         # Infrastructure as Code (Phase 4)
-├── scripts/           # Automation scripts
 └── README.md
 
 ---
