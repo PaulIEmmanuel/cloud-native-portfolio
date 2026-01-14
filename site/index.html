@@ -2,19 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Emmanuel Ikeokwukwe Paul | Junior Cloud Engineer</title>
+  <title>Emmanuel Ikeokwukwe Paul | Associate Cloud Engineer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+
+  <div class="background-overlay"></div>
+
   <main class="container">
     <section class="card">
 
       <!-- HEADER -->
       <header>
         <h1>Emmanuel Ikeokwukwe Paul</h1>
-        <p class="subtitle">Junior Cloud & Infrastructure Engineer</p>
+        <p class="subtitle">Associate Cloud & Infrastructure Engineer</p>
         <p class="contact">
           Lagos, Nigeria ·
           <a href="mailto:paulemmanuel199@gmail.com">paulemmanuel199@gmail.com</a> ·
@@ -26,37 +29,51 @@
       <section>
         <h2>Professional Summary</h2>
         <p>
-          Entry-level Cloud and Infrastructure Engineer with hands-on experience
-          in AWS, Docker, Git, Bash, Python, and Go. Strong engineering background
-          in process optimization, systems operations, and workflow documentation.
-          Actively building cloud-native skills through real-world projects with
-          a focus on scalable infrastructure, automation, and DevOps practices.
+          Associate Cloud and Infrastructure Engineer with hands-on experience in AWS,
+          Docker, Linux, CI/CD automation, Terraform, and Python. Strong foundation
+          in systems operations and architecture design. Currently focused on building
+          scalable, production-style cloud environments and improving service reliability.
         </p>
       </section>
 
       <!-- SKILLS -->
       <section>
         <h2>Technical Skills</h2>
-        <ul>
-          <li><strong>Cloud & DevOps:</strong> AWS (EC2, S3, IAM, Lambda, VPC), Docker, Git/GitHub, CI/CD concepts, Terraform, Linux</li>
-          <li><strong>Databases:</strong> DynamoDB (basic), MySQL (RDS), backup & recovery strategies</li>
-          <li><strong>Scripting & Languages:</strong> Python, Go, Bash/Shell scripting</li>
+        <ul class="skills-list">
+          <li><strong>Cloud & DevOps:</strong> AWS (EC2, S3, IAM, Lambda, VPC), Docker, Git/GitHub, CI/CD, Terraform, Linux</li>
+          <li><strong>Databases:</strong> DynamoDB, MySQL (RDS)</li>
+          <li><strong>Scripting:</strong> Python, Go, Bash</li>
           <li><strong>Monitoring:</strong> AWS CloudWatch</li>
         </ul>
       </section>
 
-      <!-- PROJECT -->
+      <!-- PROJECTS -->
       <section>
         <h2>Projects</h2>
-        <p>
-          <strong>Cloud-Native Portfolio Platform</strong><br />
-          A multi-phase cloud engineering project demonstrating static hosting,
-          serverless backend development, containerization with Docker, EC2
-          deployment, IAM security, and DynamoDB integration.
-        </p>
+
+        <div class="project-box">
+          <p>
+            <strong>1. Cloud-Native Portfolio Platform (Completed)</strong><br/>
+            Designed and deployed a personal portfolio platform hosted on AWS using
+            S3 static site hosting, Dockerized Flask backend on EC2, DynamoDB storage,
+            IAM security, CloudWatch monitoring, and CI/CD container image pipeline
+            with Amazon ECR.
+          </p>
+        </div>
+
+        <div class="project-box ongoing">
+          <p>
+            <strong>2. High-Availability Portfolio Architecture (Ongoing)</strong><br/>
+            Upgrading portfolio system to production-grade architecture using
+            Application Load Balancer, Auto Scaling Groups, private subnets,
+            Amazon RDS MySQL, Secrets Manager, and multi-AZ redundancy. Focused on
+            resilience, fault tolerance, and zero-downtime deployment strategy.
+          </p>
+        </div>
+
       </section>
 
-      <!-- CONTACT FORM -->
+      <!-- CONTACT -->
       <section>
         <h2>Contact Me</h2>
 
@@ -87,22 +104,17 @@
       try {
         const response = await fetch("http://54.196.102.171/contact", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, message })
         });
 
         if (response.ok) {
-          document.getElementById("response").innerText =
-            "Message sent successfully.";
+          document.getElementById("response").innerText = "Message sent successfully.";
         } else {
-          document.getElementById("response").innerText =
-            "Failed to send message.";
+          document.getElementById("response").innerText = "Failed to send message.";
         }
       } catch (error) {
-        document.getElementById("response").innerText =
-          "Error connecting to server.";
+        document.getElementById("response").innerText = "Error connecting to server.";
       }
     });
   </script>
